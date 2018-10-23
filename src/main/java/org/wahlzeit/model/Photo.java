@@ -65,7 +65,9 @@ public class Photo extends DataObject {
 	public static final int MAX_PHOTO_WIDTH = 420;
 	public static final int MAX_PHOTO_HEIGHT = 600;
 	public static final int MAX_THUMB_PHOTO_WIDTH = 105;
-	public static final int MAX_THUMB_PHOTO_HEIGHT = 150;
+	public static final int MAX_THUMB_PHOTO_HEIGHT = 150;	
+
+	public Location location = null;
 
 	protected PhotoId id = null;
 	
@@ -73,6 +75,7 @@ public class Photo extends DataObject {
 	 *
 	 */
 	protected String ownerId;
+	
 	
 	/**
 	 * Each photo can be viewed in different sizes (XS, S, M, L, XL)
@@ -417,5 +420,13 @@ public class Photo extends DataObject {
 	public void setNoNewPraise() {
 		noVotesAtLastNotification = noVotes;
 		incWriteCount();
+	}
+	
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+	
+	public Location getLocation() {
+		return location;
 	}
 }
