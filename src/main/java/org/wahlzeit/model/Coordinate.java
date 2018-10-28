@@ -16,7 +16,9 @@ public class Coordinate {
 	private double z = 0.0;
 	
 	public Coordinate() {
-		super();
+		this.x = 0.0;
+		this.y = 0.0;
+		this.z = 0.0;
 	}
 	
 	//I think this will help me for following tasks
@@ -28,7 +30,7 @@ public class Coordinate {
 	}
 	
 	protected double getDistance(Coordinate point) {
-		return Math.sqrt(this.multiply(point));
+		return Math.sqrt(this.computeRadiant(point));
 		
 	}
 	
@@ -36,12 +38,13 @@ public class Coordinate {
 		return (this.x == point.x && this.y == point.y && this.z == point.z);
 	}
 	
-	private double multiply(Coordinate point) {
-		double erg = 0;
-		erg += (this.x * point.x);
-		erg += (this.y * point.y);
-		erg += (this.z * point.z);
-		return erg;		
+	
+	private double computeRadiant(Coordinate point) {
+		double radiant = 0;
+		radiant += Math.pow((this.x - point.x), 2); 
+		radiant += Math.pow((this.y - point.y), 2); 
+		radiant += Math.pow((this.z - point.z), 2); 
+		return radiant;
 	}
 	
 	@Override
@@ -52,11 +55,23 @@ public class Coordinate {
 			return false;
 		}
 		
-		if(!Coordinate.class.isInstance(obj.getClass())) {
+		if(!(obj instanceof Coordinate)) {
 			return false;
 		}
 		
 		final Coordinate point = (Coordinate) obj;
 		return this.isEqual(point);
+	}
+	
+	public double getX() {
+		return x;
+	}
+	
+	public double getY() {
+		return y;
+	}
+	
+	public double getZ() {
+		return z;
 	}
 }

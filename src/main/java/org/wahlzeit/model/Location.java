@@ -13,10 +13,11 @@ public class Location {
 	
 	public Coordinate coordinate = null;
 	
-	public Location() {
-		super();
-		
+	public Location() {		
 		coordinate = new Coordinate();
 	}
-
+	
+	public Location(Coordinate coordinate) {		
+		this.coordinate = coordinate;
+	}
 }
