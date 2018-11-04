@@ -26,14 +26,14 @@ public class LocationTest {
 	@Test
 	public void testConstructor(){
 		assertNotNull(location);
-		assertNotNull(location.coordinate);
+		assertNotNull(location.getCoordinate());
 	}
 	
 	@Test
 	public void testInitiatedConstructor(){
 		Coordinate coordinate = new Coordinate(1, 5, 2);
 		location = new Location(coordinate);
-		assertTrue(coordinate.equals(location.coordinate));
+		assertTrue(coordinate.equals(location.getCoordinate()));
 	}
 
 }
