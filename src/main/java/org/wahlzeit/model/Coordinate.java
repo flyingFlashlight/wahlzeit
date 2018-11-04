@@ -30,16 +30,25 @@ public class Coordinate {
 	}
 	
 	protected double getDistance(Coordinate point) {
+		if(point == null) {
+			throw new IllegalArgumentException("point must not be null");
+		}
 		return Math.sqrt(this.computeRadiant(point));
 		
 	}
 	
 	protected boolean isEqual(Coordinate point) {
+		if(point == null) {
+			throw new IllegalArgumentException("point must not be null");
+		}
 		return (this.x == point.x && this.y == point.y && this.z == point.z);
 	}
 	
 	
 	private double computeRadiant(Coordinate point) {
+		if(point == null) {
+			throw new IllegalArgumentException("point must not be null");
+		}
 		double radiant = 0;
 		radiant += Math.pow((this.x - point.x), 2); 
 		radiant += Math.pow((this.y - point.y), 2); 
