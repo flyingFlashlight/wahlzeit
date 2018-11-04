@@ -39,7 +39,6 @@ public class EmailAddressTest extends TestCase {
 	 */
 	public void testGetEmailAddressFromString() {
 		// invalid email addresses are allowed for local testing and online avoided by Google
-
 		assertTrue(createEmailAddressIgnoreException("bingo@bongo"));
 		assertTrue(createEmailAddressIgnoreException("bingo@bongo.com"));
 		assertTrue(createEmailAddressIgnoreException("bingo.bongo@bongo.com"));
@@ -65,6 +64,25 @@ public class EmailAddressTest extends TestCase {
 	public void testEmptyEmailAddress() {
 		assertFalse(EmailAddress.EMPTY.isValid());
 	}
+	
+	public void testIsEqual() {
+		EmailAddress ea1 = new EmailAddress("hurz@hurz.ko");
+		EmailAddress ea2 = new EmailAddress("hurz@hurz.ko");
+		EmailAddress ea3 = new EmailAddress("blah@blah.ko");
+		assertTrue(ea1.isEqual(ea2));
+		assertFalse(ea1.isEqual(ea3));
+		assertFalse(ea1.isEqual(null));
+	}
+	
+	public void testIsEmpty() {
+		EmailAddress ea1 = new EmailAddress("hurz@hurz.ko");
+		EmailAddress ea2 = new EmailAddress(null);
+		EmailAddress ea3 = new EmailAddress("");
+		assertTrue(ea1.isValid());
+		assertFalse(ea2.isValid());
+		assertFalse(ea3.isValid());
+	}
+	
 
 }
 

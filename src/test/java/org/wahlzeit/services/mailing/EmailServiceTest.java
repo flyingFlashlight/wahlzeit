@@ -48,7 +48,7 @@ public class EmailServiceTest {
 			Assert.fail("Silent mode does not allow exceptions");
 		}
 	}
-
+	
 	@Test
 	public void testSendValidEmail() {
 		try {
@@ -57,4 +57,5 @@ public class EmailServiceTest {
 			Assert.fail("Silent mode does not allow exceptions");
 		}
 	}
+
 }

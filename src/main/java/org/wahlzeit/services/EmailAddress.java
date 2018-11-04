@@ -108,7 +108,10 @@ public class EmailAddress implements Serializable {
 	 * @methodtype boolean-query
 	 */
 	public boolean isEqual(EmailAddress emailAddress) {
-		return this == emailAddress;
+		if(emailAddress == null) {
+			return false;
+		}
+		return this.asString() == emailAddress.asString();
 	}
 
 	/**
@@ -123,6 +126,12 @@ public class EmailAddress implements Serializable {
 	 *
 	 */
 	public boolean isEmpty() {
+		if(this.asString() == null){
+			return true;
+		}
+		if(this.asString().equals("")) {
+			return true;
+		}
 		return this == EMPTY;
 	}
 
