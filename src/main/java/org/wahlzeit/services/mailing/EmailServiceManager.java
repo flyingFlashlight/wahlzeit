@@ -31,6 +31,11 @@ public class EmailServiceManager {
 	 *
 	 */
 	protected static EmailServiceManager instance = null;
+	
+	/**
+	 *
+	 */
+	protected EmailService defaultService = null;
 
 	/**
 	 *
@@ -56,10 +61,6 @@ public class EmailServiceManager {
 		return getInstance().doGetDefaultService();
 	}
 
-	/**
-	 *
-	 */
-	protected EmailService defaultService = null;
 
 	/**
 	 *

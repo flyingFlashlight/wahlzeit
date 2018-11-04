@@ -31,11 +31,13 @@ public class EmailServiceTest {
 
 	EmailService emailService = null;
 	EmailAddress validAddress = null;
+	EmailAddress invalidAddress = null;
 
 	@Before
 	public void setup() throws Exception {
 		emailService = EmailServiceManager.getDefaultService();
 		validAddress = EmailAddress.getFromString("test@test.de");
+		invalidAddress = EmailAddress.getFromString("");
 	}
 
 	@Test
@@ -58,4 +60,13 @@ public class EmailServiceTest {
 		}
 	}
 
+	@Test
+	public void testMocking() {
+		try {
+			emailService.sendEmail(invalidAddress, invalidAddress, "subject", "body");
+		} catch (Exception e){
+			Assert.fail("Something went wrong");
+		}
+		
+	}
 }
