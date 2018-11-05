@@ -63,9 +63,11 @@ public class EmailServiceTest {
 	@Test
 	public void testMocking() {
 		try {
-			emailService.sendEmail(invalidAddress, invalidAddress, "subject", "body");
-		} catch (Exception e){
-			Assert.fail("Something went wrong");
+			emailService.sendEmail(invalidAddress, null, "subject", "body");
+		} catch (MailingException e){
+			assertTrue(true);
+		} catch (Exception e) {
+			assertTrue(false);
 		}
 		
 	}
