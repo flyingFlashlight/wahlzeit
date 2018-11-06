@@ -27,7 +27,6 @@ import org.junit.runners.*;
 	//org.wahlzeit.model.persistence.AbstractAdapterTest.class,
 	org.wahlzeit.model.persistence.DatastoreAdapterTest.class,
 	
-	org.wahlzeit.services.EmailAddressTest.class,
 	org.wahlzeit.services.LogBuilderTest.class,
 	
 	//Hier reicht uns jetzt die Suite
