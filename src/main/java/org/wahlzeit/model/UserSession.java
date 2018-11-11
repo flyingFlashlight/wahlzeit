@@ -66,7 +66,8 @@ public class UserSession extends Session implements Serializable {
 		initialize(myName);
 		if (httpSession.getAttribute(INITIALIZED) == null) {
 			httpSession.setAttribute(SITE_URL, mySiteUrl);
-			httpSession.setAttribute(PHOTO_FILTER, PhotoFactory.getInstance().createPhotoFilter());
+			//httpSession.setAttribute(PHOTO_FILTER, PhotoFactory.getInstance().createPhotoFilter());
+			httpSession.setAttribute(PHOTO_FILTER, BiroPhotoFactory.getInstance().createPhotoFilter());
 
 			setClient(new Guest());
 			try {
