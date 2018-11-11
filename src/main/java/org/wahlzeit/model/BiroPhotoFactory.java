@@ -1,10 +1,12 @@
 package org.wahlzeit.model;
 
+import java.util.logging.Logger;
+
 import org.wahlzeit.services.LogBuilder;
 
 public class BiroPhotoFactory extends PhotoFactory{
 	
-	
+	private static final Logger log = Logger.getLogger(PhotoFactory.class.getName());
 
 	private static BiroPhotoFactory instance = null;
 	/**
@@ -20,6 +22,7 @@ public class BiroPhotoFactory extends PhotoFactory{
 	 */
 	public static synchronized BiroPhotoFactory getInstance() {
 		if (instance == null) {
+			log.config(LogBuilder.createSystemMessage().addAction("setting generic PhotoFactory").toString());
 			setInstance(new BiroPhotoFactory());
 		}
 
@@ -41,7 +44,7 @@ public class BiroPhotoFactory extends PhotoFactory{
 	 * @methodtype factory
 	 */
 	@Override
-	public Photo createPhoto() {
+	public BiroPhoto createPhoto() {
 		return new BiroPhoto();
 	}
 
@@ -49,7 +52,7 @@ public class BiroPhotoFactory extends PhotoFactory{
 	 * Creates a new photo with the specified id
 	 */
 	@Override
-	public Photo createPhoto(PhotoId id) {
+	public BiroPhoto createPhoto(PhotoId id) {
 		return new BiroPhoto(id);
 	}
 	
