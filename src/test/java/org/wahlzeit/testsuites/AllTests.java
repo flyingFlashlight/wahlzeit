@@ -16,6 +16,10 @@ import org.junit.runners.*;
 	org.wahlzeit.model.GuestTest.class,
 	org.wahlzeit.model.LocationTest.class,
 	org.wahlzeit.model.PhotoFilterTest.class,
+	//TODO: Change this to a suite
+	org.wahlzeit.model.BiroPhotoTest.class,
+	org.wahlzeit.model.BiroPhotoFactoryTest.class,
+	org.wahlzeit.model.BiroPhotoManagerTest.class,
 	//Ist nicht komplett
 	//org.wahlzeit.model.PhotoTest.class,
 	org.wahlzeit.model.TagsTest.class,
