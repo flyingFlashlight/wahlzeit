@@ -1,5 +1,5 @@
 /*
- * CoordinateTest
+ * CartesianCoordinateTest
  * 
  * 10/28/2018
  * 
@@ -15,12 +15,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-public class CoordinateTest {
-	private Coordinate coordinate;
+public class CartesianCoordinateTest {
+	private CartesianCoordinate coordinate;
 	
 	@Before
 	public void initCoordinate() {
-		coordinate = new Coordinate();
+		coordinate = new CartesianCoordinate();
 	}
 	
 	@Test
@@ -33,15 +33,15 @@ public class CoordinateTest {
 	}
 	
 	@Test
-	public void testGetDistance() {
-		Coordinate otherPoint = new Coordinate(0, 0, 2);
-		assertTrue(2.0 == otherPoint.getDistance(coordinate));
+	public void testGetCartesianDistance() {
+		Coordinate otherPoint = new CartesianCoordinate(0, 0, 2);
+		assertTrue(2.0 == otherPoint.getCartesianDistance(coordinate));
 	}
 	
 	@Test
 	public void testIsEqual() {
-		Coordinate pointA = new Coordinate(1, 2, 3);
-		Coordinate pointB = new Coordinate(0, 0, 0);
+		Coordinate pointA = new CartesianCoordinate(1, 2, 3);
+		Coordinate pointB = new CartesianCoordinate(0, 0, 0);
 		assertTrue(pointB.isEqual(coordinate));
 		assertFalse(pointA.isEqual(coordinate));
 		assertFalse(pointA.isEqual(pointB));
@@ -49,12 +49,33 @@ public class CoordinateTest {
 	
 	@Test
 	public void testEquals() {
-		Coordinate pointA = new Coordinate(1, 2, 3);
-		Coordinate pointB = new Coordinate(0, 0, 0);
+		Coordinate pointA = new CartesianCoordinate(1, 2, 3);
+		Coordinate pointB = new CartesianCoordinate(0, 0, 0);
 		assertTrue(pointB.equals(coordinate));
 		assertFalse(pointA.equals(coordinate));
 		assertFalse(pointA.equals(pointB));
+	}
+	
+	@Test
+	public void testAsCartesianCoordinate() {
+		assertTrue(coordinate.equals(coordinate.asCartesianCoordinate()));
+	}
+	
+	@Test
+	public void testAsSphericCoordinate() {
+		SphericCoordinate sc = coordinate.asSphericCoordinate();
+		assertNotNull(sc);
 		
+	}
+	
+	@Test
+	public void testGetCentralAngle() {
+		//Der einfachste Fall
+		CartesianCoordinate cc = new CartesianCoordinate(1, 1, 1); 
+		CartesianCoordinate cc2 = new CartesianCoordinate(1, 1, 1); 
+		double angle = cc.getCentralAngle(cc2);
+		System.out.println(angle);
+		assertTrue(angle == 0.0);
 	}
 
 }

@@ -14,7 +14,7 @@ public class Location {
 	private Coordinate coordinate = null;
 	
 	public Location() {		
-		coordinate = new Coordinate();
+		coordinate = new CartesianCoordinate();
 	}
 	
 	public Location(Coordinate coordinate) {		
