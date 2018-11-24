@@ -16,10 +16,10 @@ public class SphericCoordinate implements Coordinate{
 	//We work with degrees instead of radians
 	public SphericCoordinate(double phi, double theta, double radius) {
 		super();
-		if(theta > 180.0 || theta < 0.0) {
+		if(theta > Math.PI || theta < 0.0) {
 			throw new IllegalArgumentException("theta out of value range");
 		}
-		if(phi < -180.0 || phi > 180.0) {
+		if(phi < -Math.PI || phi > Math.PI) {
 			throw new IllegalArgumentException("phi out of value range");
 		}
 		this.phi = phi;
@@ -30,9 +30,12 @@ public class SphericCoordinate implements Coordinate{
 
 	@Override
 	public CartesianCoordinate asCartesianCoordinate() {
-		double x = radius * Math.sin(Math.toRadians(theta)) * Math.cos(Math.toRadians(phi));
-		double y = radius * Math.sin(Math.toRadians(theta)) * Math.cos(Math.toRadians(phi));
-		double z = radius * Math.cos(Math.toRadians(theta));
+		double x = radius * Math.sin(theta) * Math.cos(phi);
+		//System.out.print("[asCC()] x is " + x + "\n");
+		double y = radius * Math.sin(theta) * Math.sin(phi);
+		//System.out.print("[asCC()] y is " + y + "\n");
+		double z = radius * Math.cos(theta);
+		//System.out.print("[asCC()] z is " + z + "\n");
 		return new CartesianCoordinate(x, y, z);
 	}
 

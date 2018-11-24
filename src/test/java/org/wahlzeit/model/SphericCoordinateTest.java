@@ -69,6 +69,15 @@ public class SphericCoordinateTest {
 	public void testAsCartesianCoordinate() {
 		CartesianCoordinate ca = coordinate.asCartesianCoordinate();
 		assertNotNull(ca);
+		SphericCoordinate cc = new SphericCoordinate(2, 3, 1);
+		assertNotNull(cc);
+		CartesianCoordinate sc = cc.asCartesianCoordinate();
+		System.out.println("x = " + sc.getX());
+		System.out.println("y = " + sc.getY());
+		System.out.println("z = " + sc.getZ());
+		assertTrue(sc.getX() == -0.05872664492762098);
+		assertTrue(sc.getY() == 0.12832006020245673);
+		assertTrue(sc.getZ() == -0.9899924966004454);
 	}
 	
 	@Test

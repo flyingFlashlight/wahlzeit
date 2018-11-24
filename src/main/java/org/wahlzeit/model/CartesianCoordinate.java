@@ -84,12 +84,12 @@ public class CartesianCoordinate implements Coordinate {
 	@Override
 	public SphericCoordinate asSphericCoordinate() {
 		double radius = Math.sqrt(((Math.pow(this.x, 2))+(Math.pow(this.y, 2))+(Math.pow(this.z, 2))));
-		double theta = Math.toDegrees(Math.acos((this.z/radius)));
+		double theta = Math.acos((this.z/radius));
 		double phi = 0.0;
 		if(this.x == 0) {
-			phi = Math.toDegrees((Math.signum(y)*(Math.PI/2)));
+			phi = (Math.signum(y)*(Math.PI/2));
 		} else if(this.x > 0) {
-			phi = Math.toDegrees(Math.atan(y/x));
+			phi = Math.atan(y/x);
 		} else {
 			phi = Math.atan(this.y/this.x);
 			if(this.y >= 0) {
@@ -97,7 +97,7 @@ public class CartesianCoordinate implements Coordinate {
 			} else {
 				phi -= Math.PI;
 			}
-			phi = Math.toDegrees(phi);
+			//phi = phi;
 		}
 		
 		return new SphericCoordinate(phi, theta, radius);
