@@ -22,6 +22,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 		//if(phi < -Math.PI || phi > Math.PI) {
 		//	throw new IllegalArgumentException("phi out of value range");
 		//}
+		
 		this.phi = phi;
 		this.theta = theta;
 		this.radius = radius;
@@ -69,14 +70,18 @@ public class SphericCoordinate extends AbstractCoordinate {
 
 	@Override
 	public double getCentralAngle(Coordinate coordinate) {
-		if(coordinate == null) {
-			throw new IllegalArgumentException("point must not be null");
-		}if(!(coordinate instanceof SphericCoordinate)) {
-			throw new IllegalArgumentException("point must not a SphericCoordinate");
-		}
+		//Precondition
+		assert coordinate != null;
+		assert (coordinate instanceof SphericCoordinate);
+		
+		//if(coordinate == null) {
+		//	throw new IllegalArgumentException("point must not be null");
+		//}if(!(coordinate instanceof SphericCoordinate)) {
+		//	throw new IllegalArgumentException("point must not a SphericCoordinate");
+		//}
 		SphericCoordinate tmp = (SphericCoordinate) coordinate;
 
-		//Precondition/Classinvariant
+		//Classinvariant
 		tmp.assertClassInvariants();
 		this.assertClassInvariants();
 		
@@ -96,14 +101,18 @@ public class SphericCoordinate extends AbstractCoordinate {
 
 	@Override
 	public boolean isEqual(Coordinate point) {
-		if(point == null) {
-			throw new IllegalArgumentException("point must not be null");
-		} if (!(point instanceof SphericCoordinate)) {
-			return false;
-		}
+		//Precondition
+		assert point != null;
+		assert (point instanceof SphericCoordinate);
+		
+		//if(point == null) {
+		//	throw new IllegalArgumentException("point must not be null");
+		//} if (!(point instanceof SphericCoordinate)) {
+		//	return false;
+		//}
 		SphericCoordinate sc = (SphericCoordinate) point;
 
-		//Precondition/Classinvariant
+		//Classinvariant
 		sc.assertClassInvariants();		
 		this.assertClassInvariants();
 		

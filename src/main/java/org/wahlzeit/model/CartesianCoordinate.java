@@ -33,20 +33,25 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	}*/
 	
 	public boolean isEqual(Coordinate point) {
-		if(point == null) {
-			throw new IllegalArgumentException("point must not be null");
-		} if (!(point instanceof CartesianCoordinate)) {
-			return false;
-		}
+		//Precondition
+		assert point != null;
+		assert (point instanceof CartesianCoordinate);
+		//if(point == null) {
+		//	throw new IllegalArgumentException("point must not be null");
+		//} if (!(point instanceof CartesianCoordinate)) {
+		//	return false;
+		//}
 		CartesianCoordinate sc = (CartesianCoordinate) point;
 		return (this.x == sc.x && this.y == sc.y && this.z == sc.z);
 	}
 	
 	
 	public double computeRadiant(CartesianCoordinate point) {
-		if(point == null) {
-			throw new IllegalArgumentException("point must not be null");
-		}
+		//Precondition
+		assert point != null;
+		//if(point == null) {
+		//	throw new IllegalArgumentException("point must not be null");
+		//}
 		double radiant = 0;
 		radiant += Math.pow((this.x - point.x), 2); 
 		radiant += Math.pow((this.y - point.y), 2); 
@@ -58,13 +63,16 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	public boolean equals(Object obj) {
 		//My implementation is inspired by this exmaple
 		//https://stackoverflow.com/questions/8180430/how-to-override-equals-method-in-java
-		if(obj == null) {
-			return false;
-		}
-		
-		if(!(obj instanceof CartesianCoordinate)) {
-			return false;
-		}
+
+		assert obj != null;
+		assert (obj instanceof CartesianCoordinate);
+		//if(obj == null) {
+		//	return false;
+		//}
+		//
+		//if(!(obj instanceof CartesianCoordinate)) {
+		//	return false;
+		//}
 		
 		final CartesianCoordinate point = (CartesianCoordinate) obj;
 		return this.isEqual(point);
