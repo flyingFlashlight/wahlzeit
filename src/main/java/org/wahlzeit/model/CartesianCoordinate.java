@@ -23,14 +23,14 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	}
 	
 	
-	public double getCartesianDistance(Coordinate point) {
+	/*public double getCartesianDistance(Coordinate point) {
 		if(point == null) {
 			throw new IllegalArgumentException("point must not be null");
 		}
 		CartesianCoordinate tmp = point.asCartesianCoordinate();
 		return Math.sqrt(this.computeRadiant(tmp));
 		
-	}
+	}*/
 	
 	public boolean isEqual(Coordinate point) {
 		if(point == null) {
@@ -43,7 +43,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	}
 	
 	
-	private double computeRadiant(CartesianCoordinate point) {
+	public double computeRadiant(CartesianCoordinate point) {
 		if(point == null) {
 			throw new IllegalArgumentException("point must not be null");
 		}
@@ -97,15 +97,36 @@ public class CartesianCoordinate extends AbstractCoordinate {
 			} else {
 				phi -= Math.PI;
 			}
-			//phi = phi;
 		}
 		
-		return new SphericCoordinate(phi, theta, radius);
+		//TODO: Jetzt muessen wir hier den Vertrag erfuellen
+		if(radius < 0) {
+			radius = radius * -1;
+		}
+		
+		if(theta < 0.0) {
+			theta = theta * -1;
+		}
+		if(theta > Math.PI) {
+			theta = theta % Math.PI;
+		}
+		
+		phi = phi % Math.PI;
+		
+		SphericCoordinate tmp =  new SphericCoordinate(phi, theta, radius);
+		tmp.assertClassInvariants();
+		return tmp;
 	}
+	
 	@Override
 	public double getCentralAngle(Coordinate coordinate) {
 		SphericCoordinate thisConverted = this.asSphericCoordinate();
 		SphericCoordinate otherDude = coordinate.asSphericCoordinate();
+		
+		thisConverted.assertClassInvariants();
+		otherDude.assertClassInvariants();
+		
 		return thisConverted.getCentralAngle(otherDude);
 	}
+	
 }

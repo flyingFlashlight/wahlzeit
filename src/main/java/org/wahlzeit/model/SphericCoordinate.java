@@ -16,30 +16,41 @@ public class SphericCoordinate extends AbstractCoordinate {
 	//We work with degrees instead of radians
 	public SphericCoordinate(double phi, double theta, double radius) {
 		super();
-		if(theta > Math.PI || theta < 0.0) {
-			throw new IllegalArgumentException("theta out of value range");
-		}
-		if(phi < -Math.PI || phi > Math.PI) {
-			throw new IllegalArgumentException("phi out of value range");
-		}
+		//if(theta > Math.PI || theta < 0.0) {
+		//	throw new IllegalArgumentException("theta out of value range");
+		//}
+		//if(phi < -Math.PI || phi > Math.PI) {
+		//	throw new IllegalArgumentException("phi out of value range");
+		//}
 		this.phi = phi;
 		this.theta = theta;
 		this.radius = radius;
+		
+		//Postcondition
+		this.assertClassInvariants();
 	}
 	
 
 	@Override
 	public CartesianCoordinate asCartesianCoordinate() {
+		//Invariant
+		this.assertClassInvariants();
+		
 		double x = radius * Math.sin(theta) * Math.cos(phi);
 		//System.out.print("[asCC()] x is " + x + "\n");
 		double y = radius * Math.sin(theta) * Math.sin(phi);
 		//System.out.print("[asCC()] y is " + y + "\n");
 		double z = radius * Math.cos(theta);
 		//System.out.print("[asCC()] z is " + z + "\n");
-		return new CartesianCoordinate(x, y, z);
+	
+		//Postcondition
+		CartesianCoordinate tmp = new CartesianCoordinate(x, y, z);
+		tmp.assertClassInvariants();
+		
+		return tmp;
 	}
 
-	@Override
+	/*@Override
 	public double getCartesianDistance(Coordinate point) {
 		if(point == null) {
 			throw new IllegalArgumentException("point must not be null");
@@ -47,10 +58,12 @@ public class SphericCoordinate extends AbstractCoordinate {
 		//Goes to CArtesianCoordinate
 		return this.asCartesianCoordinate().getCartesianDistance(point);
 		
-	}
+	}*/
 
 	@Override
 	public SphericCoordinate asSphericCoordinate() {
+		//Precondition
+		this.assertClassInvariants();
 		return this;
 	}
 
@@ -62,6 +75,11 @@ public class SphericCoordinate extends AbstractCoordinate {
 			throw new IllegalArgumentException("point must not a SphericCoordinate");
 		}
 		SphericCoordinate tmp = (SphericCoordinate) coordinate;
+
+		//Precondition/Classinvariant
+		tmp.assertClassInvariants();
+		this.assertClassInvariants();
+		
 		if(tmp.radius != this.radius) {
 			//Two different versions of radius do not work
 			return 0;
@@ -84,18 +102,26 @@ public class SphericCoordinate extends AbstractCoordinate {
 			return false;
 		}
 		SphericCoordinate sc = (SphericCoordinate) point;
+
+		//Precondition/Classinvariant
+		sc.assertClassInvariants();		
+		this.assertClassInvariants();
+		
 		return (this.phi == sc.phi && this.theta == sc.theta && this.radius == sc.radius);
 	}
 	
 	public double getPhi() {
+		assertPhi();
 		return this.phi;
 	}
 	
 	public double getTheta() {
+		assertTheta();
 		return this.theta;
 	}
 	
 	public double getRadius() {
+		assertRadius();
 		return this.radius;
 	}
 	
@@ -112,6 +138,32 @@ public class SphericCoordinate extends AbstractCoordinate {
 		}
 		
 		final SphericCoordinate point = (SphericCoordinate) obj;
+		point.assertClassInvariants();
 		return this.isEqual(point);
+	}
+	
+	public void assertRadius() {
+		if(this.radius < 0.0) {
+			throw new IllegalStateException("radius is less than zero");
+		}
+		
+	}
+	
+	public void assertTheta() {
+		if(this.theta > Math.PI || this.theta < 0.0) {
+			throw new IllegalStateException("Theta has illegal value");
+		} 
+	}
+	
+	public void assertPhi() {
+		if(this.phi < -Math.PI || this.phi > Math.PI) {
+			throw new IllegalStateException("Phi has illegal value");
+		}
+	}
+	
+	public void assertClassInvariants() {
+		assertRadius();
+		assertTheta();
+		assertPhi();
 	}
 }

@@ -85,4 +85,9 @@ public class SphericCoordinateTest {
 		assertTrue(coordinate.equals(coordinate.asSphericCoordinate()));
 		
 	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void testDBCConstructor() {
+		SphericCoordinate pointA = new SphericCoordinate(1, -5, 3);
+	}
 }
