@@ -1,10 +1,15 @@
 package org.wahlzeit.model;
 
+import java.util.logging.Logger;
+
 public class SphericCoordinate extends AbstractCoordinate {
 	
 	private double phi;
 	private double theta;
 	private double radius;
+
+
+	private static final Logger log = Logger.getLogger(AbstractCoordinate.class.getName());
 	
 
 	public SphericCoordinate() {
@@ -157,6 +162,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 	
 	public void assertRadius() {
 		if(this.radius < 0.0) {
+			log.info("assertRadius: radius is less than zero");
 			throw new IllegalStateException("radius is less than zero");
 		}
 		
@@ -164,12 +170,14 @@ public class SphericCoordinate extends AbstractCoordinate {
 	
 	public void assertTheta() {
 		if(this.theta > Math.PI || this.theta < 0.0) {
+			log.info("assertTheta: Theta has illegal value");
 			throw new IllegalStateException("Theta has illegal value");
 		} 
 	}
 	
 	public void assertPhi() {
 		if(this.phi < -Math.PI || this.phi > Math.PI) {
+			log.info("assertPhi: Phi has illegal value");
 			throw new IllegalStateException("Phi has illegal value");
 		}
 	}
@@ -182,6 +190,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 	
 	public void assertInstance(Coordinate coord) {
 		if(!(coord instanceof SphericCoordinate)) {
+			log.info("assertInstance: Argument is no instance of SphericCoordinate");
 			throw new IllegalArgumentException("Argument is no instance of SphericCoordinate");
 		}
 		

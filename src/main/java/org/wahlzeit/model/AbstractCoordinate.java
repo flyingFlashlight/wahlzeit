@@ -1,6 +1,10 @@
 package org.wahlzeit.model;
 
+import java.util.logging.Logger;
+
 public abstract class AbstractCoordinate implements Coordinate {
+
+	private static final Logger log = Logger.getLogger(AbstractCoordinate.class.getName());
 
 	public double getCartesianDistance(Coordinate point) throws IllegalArgumentException{
 		assert point != null;
@@ -21,6 +25,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 	
 	public void assertCoordNotNull(Coordinate coord) {
 		if(coord == null) {
+			log.info("assertCoordNotNull(): No argument given");
 			throw new IllegalArgumentException("No argument given");
 		}
 	}

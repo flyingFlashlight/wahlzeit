@@ -1,9 +1,13 @@
 package org.wahlzeit.model;
 
+import java.util.logging.Logger;
+
 public class CartesianCoordinate extends AbstractCoordinate {
 	private double x = 0.0;
 	private double y = 0.0;
 	private double z = 0.0;
+
+	private static final Logger log = Logger.getLogger(AbstractCoordinate.class.getName());
 	
 	public CartesianCoordinate() {
 		this.x = 0.0;
@@ -144,6 +148,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	
 	public void assertInstance(Coordinate coord) {
 		if(!(coord instanceof CartesianCoordinate)) {
+			log.info("assertInstance(): No argument given");
 			throw new IllegalArgumentException("Argument is not instance of ");
 		}
 		
