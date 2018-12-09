@@ -1,8 +1,10 @@
 package org.wahlzeit.model;
 
+import java.util.logging.Logger;
+
 public class BiroPhoto extends Photo{
 	
-	
+	private static final Logger log = Logger.getLogger(BiroPhoto.class.getName());
 
 	public static final String NOTAVAILABLE = "n/a";
 	
@@ -28,6 +30,7 @@ public class BiroPhoto extends Photo{
 	public BiroPhoto(PhotoId myId) {
 		super(myId);
 		if(myId.value < 0) {
+			log.info("BiroPhoto: PhotoID must not be negative");
 			throw new IllegalArgumentException("PhotoID must not be negative");
 		}
 		this.setProducer(NOTAVAILABLE);
@@ -66,6 +69,7 @@ public class BiroPhoto extends Photo{
 	 */
 	public void setAdvertiser(String newAdvertiser) {
 		if(newAdvertiser == null) {
+			log.info("setAdvertiser: Advertiser must not be null");
 			throw new IllegalArgumentException("Advertiser must not be null");
 		}
 		this.advertiser = newAdvertiser;
@@ -83,6 +87,7 @@ public class BiroPhoto extends Photo{
 	 */
 	public void setPenColor(String newPenColor) {
 		if(newPenColor == null) {
+			log.info("setPenColor: Pencolor must not be null");
 			throw new IllegalArgumentException("Pencolor must not be null");
 		}
 		this.penColor = newPenColor;
@@ -100,6 +105,7 @@ public class BiroPhoto extends Photo{
 	 */
 	public void setInkColor(String newInkColor) {
 		if(newInkColor == null) {
+			log.info("setInkColor: InkColor must not be null");
 			throw new IllegalArgumentException("InkColor must not be null");
 		}
 		this.inkColor = newInkColor;
