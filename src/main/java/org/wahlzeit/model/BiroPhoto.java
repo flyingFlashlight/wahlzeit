@@ -27,6 +27,9 @@ public class BiroPhoto extends Photo{
 	 */
 	public BiroPhoto(PhotoId myId) {
 		super(myId);
+		if(myId.value < 0) {
+			throw new IllegalArgumentException("PhotoID must not be negative");
+		}
 		this.setProducer(NOTAVAILABLE);
 		this.setAdvertiser(NOTAVAILABLE);
 		this.setPenColor(NOTAVAILABLE);
@@ -62,6 +65,9 @@ public class BiroPhoto extends Photo{
 	 * @methodtype set
 	 */
 	public void setAdvertiser(String newAdvertiser) {
+		if(newAdvertiser == null) {
+			throw new IllegalArgumentException("Advertiser must not be null");
+		}
 		this.advertiser = newAdvertiser;
 	}
 	
@@ -76,6 +82,9 @@ public class BiroPhoto extends Photo{
 	 * @methodtype set
 	 */
 	public void setPenColor(String newPenColor) {
+		if(newPenColor == null) {
+			throw new IllegalArgumentException("Pencolor must not be null");
+		}
 		this.penColor = newPenColor;
 	}
 
@@ -90,6 +99,9 @@ public class BiroPhoto extends Photo{
 	 * @methodtype set
 	 */
 	public void setInkColor(String newInkColor) {
+		if(newInkColor == null) {
+			throw new IllegalArgumentException("InkColor must not be null");
+		}
 		this.inkColor = newInkColor;
 	}
 

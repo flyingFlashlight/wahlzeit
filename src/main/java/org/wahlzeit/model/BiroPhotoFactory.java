@@ -44,7 +44,7 @@ public class BiroPhotoFactory extends PhotoFactory{
 	 * @methodtype factory
 	 */
 	@Override
-	public BiroPhoto createPhoto() {
+	public BiroPhoto createPhoto() throws IllegalArgumentException{
 		return new BiroPhoto();
 	}
 
@@ -52,7 +52,7 @@ public class BiroPhotoFactory extends PhotoFactory{
 	 * Creates a new photo with the specified id
 	 */
 	@Override
-	public BiroPhoto createPhoto(PhotoId id) {
+	public BiroPhoto createPhoto(PhotoId id) throws IllegalArgumentException{
 		return new BiroPhoto(id);
 	}
 	
