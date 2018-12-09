@@ -71,8 +71,10 @@ public class SphericCoordinate extends AbstractCoordinate {
 	@Override
 	public double getCentralAngle(Coordinate coordinate) {
 		//Precondition
-		assert coordinate != null;
-		assert (coordinate instanceof SphericCoordinate);
+		this.assertCoordNotNull(coordinate);
+		//assert coordinate != null;
+		assertInstance(coordinate);
+		//assert (coordinate instanceof SphericCoordinate);
 		
 		//if(coordinate == null) {
 		//	throw new IllegalArgumentException("point must not be null");
@@ -102,8 +104,10 @@ public class SphericCoordinate extends AbstractCoordinate {
 	@Override
 	public boolean isEqual(Coordinate point) {
 		//Precondition
-		assert point != null;
-		assert (point instanceof SphericCoordinate);
+		assertCoordNotNull(point);
+		//assert point != null;
+		assertInstance(point);
+		//assert (point instanceof SphericCoordinate);
 		
 		//if(point == null) {
 		//	throw new IllegalArgumentException("point must not be null");
@@ -174,5 +178,10 @@ public class SphericCoordinate extends AbstractCoordinate {
 		assertRadius();
 		assertTheta();
 		assertPhi();
+	}
+	
+	public void assertInstance(Coordinate coord) {
+		assert coord instanceof SphericCoordinate;
+		
 	}
 }

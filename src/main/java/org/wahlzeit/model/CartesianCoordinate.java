@@ -34,8 +34,10 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	
 	public boolean isEqual(Coordinate point) {
 		//Precondition
-		assert point != null;
-		assert (point instanceof CartesianCoordinate);
+		assertCoordNotNull(point);
+		//assert point != null;
+		assertInstance(point);
+		//assert (point instanceof CartesianCoordinate);
 		//if(point == null) {
 		//	throw new IllegalArgumentException("point must not be null");
 		//} if (!(point instanceof CartesianCoordinate)) {
@@ -48,7 +50,8 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	
 	public double computeRadiant(CartesianCoordinate point) {
 		//Precondition
-		assert point != null;
+		assertCoordNotNull(point);
+		//assert point != null;
 		//if(point == null) {
 		//	throw new IllegalArgumentException("point must not be null");
 		//}
@@ -64,8 +67,10 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		//My implementation is inspired by this exmaple
 		//https://stackoverflow.com/questions/8180430/how-to-override-equals-method-in-java
 
-		assert obj != null;
-		assert (obj instanceof CartesianCoordinate);
+		//assert obj != null;
+		assertCoordNotNull((Coordinate) obj);
+		assertInstance((Coordinate) obj);
+		//assert (obj instanceof CartesianCoordinate);
 		//if(obj == null) {
 		//	return false;
 		//}
@@ -135,6 +140,11 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		otherDude.assertClassInvariants();
 		
 		return thisConverted.getCentralAngle(otherDude);
+	}
+	
+	public void assertInstance(Coordinate coord) {
+		assert coord instanceof CartesianCoordinate;
+		
 	}
 	
 }

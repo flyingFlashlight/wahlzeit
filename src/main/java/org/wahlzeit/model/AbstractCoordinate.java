@@ -18,4 +18,8 @@ public abstract class AbstractCoordinate implements Coordinate {
 	
 	public void assertClassInvariants() {
 	}
+	
+	public void assertCoordNotNull(Coordinate coord) {
+		assert coord != null;
+	}
 }
