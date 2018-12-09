@@ -13,7 +13,7 @@ public class Location {
 	
 	private Coordinate coordinate = null;
 	
-	public Location() {		
+	public Location() throws IllegalStateException{		
 		coordinate = new CartesianCoordinate();
 	}
 	

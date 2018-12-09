@@ -11,7 +11,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		this.z = 0.0;
 	}
 	//I think this will help me for following tasks
-	public CartesianCoordinate(double x, double y, double z) {
+	public CartesianCoordinate(double x, double y, double z) throws IllegalStateException{
 		super();
 		this.x = x;
 		this.y = y;
