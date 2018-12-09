@@ -32,7 +32,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		
 	}*/
 	
-	public boolean isEqual(Coordinate point) {
+	public boolean isEqual(Coordinate point) throws IllegalArgumentException {
 		//Precondition
 		assertCoordNotNull(point);
 		//assert point != null;
@@ -48,7 +48,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	}
 	
 	
-	public double computeRadiant(CartesianCoordinate point) {
+	public double computeRadiant(CartesianCoordinate point) throws IllegalArgumentException {
 		//Precondition
 		assertCoordNotNull(point);
 		//assert point != null;
@@ -63,7 +63,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	}
 	
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) throws IllegalArgumentException{
 		//My implementation is inspired by this exmaple
 		//https://stackoverflow.com/questions/8180430/how-to-override-equals-method-in-java
 
@@ -143,7 +143,9 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	}
 	
 	public void assertInstance(Coordinate coord) {
-		assert coord instanceof CartesianCoordinate;
+		if(!(coord instanceof CartesianCoordinate)) {
+			throw new IllegalArgumentException("Argument is not instance of ");
+		}
 		
 	}
 	

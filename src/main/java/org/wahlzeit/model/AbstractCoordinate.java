@@ -2,7 +2,7 @@ package org.wahlzeit.model;
 
 public abstract class AbstractCoordinate implements Coordinate {
 
-	public double getCartesianDistance(Coordinate point) {
+	public double getCartesianDistance(Coordinate point) throws IllegalArgumentException{
 		assert point != null;
 		//if(point == null) {
 		//	throw new IllegalArgumentException("point must not be null");
@@ -16,10 +16,12 @@ public abstract class AbstractCoordinate implements Coordinate {
 		return Math.sqrt(thisTmp.computeRadiant(tmp));
 	}
 	
-	public void assertClassInvariants() {
+	public void assertClassInvariants() throws IllegalStateException{
 	}
 	
 	public void assertCoordNotNull(Coordinate coord) {
-		assert coord != null;
+		if(coord == null) {
+			throw new IllegalArgumentException("No argument given");
+		}
 	}
 }

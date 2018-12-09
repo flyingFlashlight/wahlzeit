@@ -14,7 +14,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 	}
 	
 	//We work with degrees instead of radians
-	public SphericCoordinate(double phi, double theta, double radius) {
+	public SphericCoordinate(double phi, double theta, double radius) throws IllegalStateException{
 		super();
 		//if(theta > Math.PI || theta < 0.0) {
 		//	throw new IllegalArgumentException("theta out of value range");
@@ -33,7 +33,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 	
 
 	@Override
-	public CartesianCoordinate asCartesianCoordinate() {
+	public CartesianCoordinate asCartesianCoordinate() throws IllegalStateException{
 		//Invariant
 		this.assertClassInvariants();
 		
@@ -62,14 +62,14 @@ public class SphericCoordinate extends AbstractCoordinate {
 	}*/
 
 	@Override
-	public SphericCoordinate asSphericCoordinate() {
+	public SphericCoordinate asSphericCoordinate() throws IllegalStateException{
 		//Precondition
 		this.assertClassInvariants();
 		return this;
 	}
 
 	@Override
-	public double getCentralAngle(Coordinate coordinate) {
+	public double getCentralAngle(Coordinate coordinate) throws IllegalStateException, IllegalArgumentException{
 		//Precondition
 		this.assertCoordNotNull(coordinate);
 		//assert coordinate != null;
@@ -102,7 +102,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 	}
 
 	@Override
-	public boolean isEqual(Coordinate point) {
+	public boolean isEqual(Coordinate point) throws IllegalStateException, IllegalArgumentException{
 		//Precondition
 		assertCoordNotNull(point);
 		//assert point != null;
@@ -174,14 +174,16 @@ public class SphericCoordinate extends AbstractCoordinate {
 		}
 	}
 	
-	public void assertClassInvariants() {
+	public void assertClassInvariants() throws IllegalStateException{
 		assertRadius();
 		assertTheta();
 		assertPhi();
 	}
 	
 	public void assertInstance(Coordinate coord) {
-		assert coord instanceof SphericCoordinate;
+		if(!(coord instanceof SphericCoordinate)) {
+			throw new IllegalArgumentException("Argument is no instance of SphericCoordinate");
+		}
 		
 	}
 }
