@@ -19,11 +19,12 @@ public class Location {
 	
 	public Location() {
 		int i = 0;
-		for(i = 0; i < 3;) {
+		for(i = 0; i < 3; i++) {
 			try {
 				coordinate = new CartesianCoordinate();
+				break;
 			} catch(IllegalArgumentException e){
-				i++;
+				//Next Round in loop
 			}
 		}
 		if(i == 3) {
