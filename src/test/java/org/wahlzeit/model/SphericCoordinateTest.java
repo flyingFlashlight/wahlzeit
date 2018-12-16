@@ -90,4 +90,5 @@ public class SphericCoordinateTest {
 	public void testDBCConstructor() {
 		SphericCoordinate pointA = new SphericCoordinate(1, -5, 3);
 	}
+	
 }

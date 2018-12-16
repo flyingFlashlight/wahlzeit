@@ -21,12 +21,6 @@ public class SphericCoordinate extends AbstractCoordinate {
 	//We work with degrees instead of radians
 	public SphericCoordinate(double phi, double theta, double radius) throws IllegalStateException{
 		super();
-		//if(theta > Math.PI || theta < 0.0) {
-		//	throw new IllegalArgumentException("theta out of value range");
-		//}
-		//if(phi < -Math.PI || phi > Math.PI) {
-		//	throw new IllegalArgumentException("phi out of value range");
-		//}
 		
 		this.phi = phi;
 		this.theta = theta;
@@ -56,16 +50,6 @@ public class SphericCoordinate extends AbstractCoordinate {
 		return tmp;
 	}
 
-	/*@Override
-	public double getCartesianDistance(Coordinate point) {
-		if(point == null) {
-			throw new IllegalArgumentException("point must not be null");
-		}
-		//Goes to CArtesianCoordinate
-		return this.asCartesianCoordinate().getCartesianDistance(point);
-		
-	}*/
-
 	@Override
 	public SphericCoordinate asSphericCoordinate() throws IllegalStateException{
 		//Precondition
@@ -81,11 +65,6 @@ public class SphericCoordinate extends AbstractCoordinate {
 		assertInstance(coordinate);
 		//assert (coordinate instanceof SphericCoordinate);
 		
-		//if(coordinate == null) {
-		//	throw new IllegalArgumentException("point must not be null");
-		//}if(!(coordinate instanceof SphericCoordinate)) {
-		//	throw new IllegalArgumentException("point must not a SphericCoordinate");
-		//}
 		SphericCoordinate tmp = (SphericCoordinate) coordinate;
 
 		//Classinvariant
@@ -114,11 +93,6 @@ public class SphericCoordinate extends AbstractCoordinate {
 		assertInstance(point);
 		//assert (point instanceof SphericCoordinate);
 		
-		//if(point == null) {
-		//	throw new IllegalArgumentException("point must not be null");
-		//} if (!(point instanceof SphericCoordinate)) {
-		//	return false;
-		//}
 		SphericCoordinate sc = (SphericCoordinate) point;
 
 		//Classinvariant

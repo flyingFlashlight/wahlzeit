@@ -27,31 +27,19 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	}
 	
 	
-	/*public double getCartesianDistance(Coordinate point) {
-		if(point == null) {
-			throw new IllegalArgumentException("point must not be null");
-		}
-		CartesianCoordinate tmp = point.asCartesianCoordinate();
-		return Math.sqrt(this.computeRadiant(tmp));
-		
-	}*/
-	
 	public boolean isEqual(Coordinate point) throws IllegalArgumentException {
 		//Precondition
 		assertCoordNotNull(point);
 		//assert point != null;
 		assertInstance(point);
 		//assert (point instanceof CartesianCoordinate);
-		//if(point == null) {
-		//	throw new IllegalArgumentException("point must not be null");
-		//} if (!(point instanceof CartesianCoordinate)) {
-		//	return false;
-		//}
+	
 		CartesianCoordinate sc = (CartesianCoordinate) point;
 		return (this.x == sc.x && this.y == sc.y && this.z == sc.z);
 	}
 	
 	
+	//Aendert nicht den Zustand (Werte der Koordinaten) des Objektes
 	public double computeRadiant(CartesianCoordinate point) throws IllegalArgumentException {
 		//Precondition
 		assertCoordNotNull(point);
@@ -75,13 +63,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		assertCoordNotNull((Coordinate) obj);
 		assertInstance((Coordinate) obj);
 		//assert (obj instanceof CartesianCoordinate);
-		//if(obj == null) {
-		//	return false;
-		//}
-		//
-		//if(!(obj instanceof CartesianCoordinate)) {
-		//	return false;
-		//}
+		
 		
 		final CartesianCoordinate point = (CartesianCoordinate) obj;
 		return this.isEqual(point);
@@ -98,6 +80,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	public double getZ() {
 		return z;
 	}
+	
 	@Override
 	public SphericCoordinate asSphericCoordinate() {
 		double radius = Math.sqrt(((Math.pow(this.x, 2))+(Math.pow(this.y, 2))+(Math.pow(this.z, 2))));
