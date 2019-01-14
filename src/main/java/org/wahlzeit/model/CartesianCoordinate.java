@@ -2,6 +2,11 @@ package org.wahlzeit.model;
 
 import java.util.logging.Logger;
 
+@interface DesignPatternCooridnate2{
+	String patternName = "Value Object";
+	String[] participants = {"SphericCoordinate", "CartesianCoordinate", "AbstractCoordiante"};
+};
+
 public class CartesianCoordinate extends AbstractCoordinate {
 	private double x = 0.0;
 	private double y = 0.0;

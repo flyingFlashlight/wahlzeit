@@ -2,6 +2,11 @@ package org.wahlzeit.model;
 
 import java.util.logging.Logger;
 
+@interface DesignPatternPhotoFactory2{
+	String patternName = "Abstract Factory";
+	String[] participants = {"BiroPhotoFactory", "BiroPhoto", "PhotoFactory", "Photo"};
+};
+
 public class BiroPhoto extends Photo{
 	
 	private static final Logger log = Logger.getLogger(BiroPhoto.class.getName());

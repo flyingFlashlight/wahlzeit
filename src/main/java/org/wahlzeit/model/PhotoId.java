@@ -23,11 +23,22 @@ package org.wahlzeit.model;
 import java.io.Serializable;
 import java.util.Random;
 
+
+//@interface DesignPattern{
+//	String patternName = "Value Object";
+//	String[] participants = {"b"};
+//};
 /**
  * A photo id identifies a photo with a unique number.
  * The number has an equivalent string for web access. 
  * This class also hands out the ids.
  */
+
+@interface DesignPatternPhotoId{
+	String patternName = "Value Object";
+	String[] participants = {"PhotoId"};
+};
+
 public class PhotoId implements Serializable {
 
 	/**
