@@ -34,10 +34,11 @@ import org.wahlzeit.services.Language;
 import org.wahlzeit.services.ObjectManager;
 
 import java.util.Map;
-@interface DesignPatternPhotoFactory4{
-	String patternName = "Abstract Factory";
-	String[] participants = {"BiroPhotoFactory", "BiroPhoto", "PhotoFactory", "Photo"};
-};
+
+@PatternInstance(
+	patternName = "Abstract Factory",
+	participants = {"BiroPhotoFactory", "BiroPhoto", "PhotoFactory", "Photo"}
+)
 /**
  * A photo represents a user-provided (uploaded) photo.
  */

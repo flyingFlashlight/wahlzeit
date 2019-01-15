@@ -24,11 +24,19 @@ import org.wahlzeit.services.LogBuilder;
 
 import java.util.logging.Logger;
 
+@PatternInstance(
+	patternName = "Singleton",
+	participants = {"PhotoFactory"}
+)
 
-@interface DesignPatternPhotoFactory{
-	String patternName = "Singleton";
-	String[] participants = {"PhotoFactory"};
-};
+//TODO: Fix this with another interface PatternInstances
+//See: https://www.javatpoint.com/java-8-type-annotations-and-repeating-annotations
+//@PatternInstance(
+//	patternName = "Singleton",
+//	participants = {"PhotoFactory"}
+//)
+
+
 
 @interface DesignPatternPhotoFactory3{
 	String patternName = "Abstract Factory";

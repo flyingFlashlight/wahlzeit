@@ -6,10 +6,10 @@ import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.logging.Logger;
 
-@interface DesignPatternCooridnate3{
-	String patternName = "Value Object";
-	String[] participants = {"SphericCoordinate", "CartesianCoordinate", "AbstractCoordiante"};
-};
+@PatternInstance(
+	patternName = "Value Object",
+	participants = {"SphericCoordinate", "CartesianCoordinate", "AbstractCoordiante"}
+)
 
 public abstract class AbstractCoordinate implements Coordinate {
 

@@ -34,10 +34,10 @@ import java.util.Random;
  * This class also hands out the ids.
  */
 
-@interface DesignPatternPhotoId{
-	String patternName = "Value Object";
-	String[] participants = {"PhotoId"};
-};
+@PatternInstance( 
+	patternName = "Value Object",
+	participants = {"PhotoId"}
+)
 
 public class PhotoId implements Serializable {
 

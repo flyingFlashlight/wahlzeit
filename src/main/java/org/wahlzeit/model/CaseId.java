@@ -19,7 +19,10 @@
  */
 
 package org.wahlzeit.model;
-
+@PatternInstance( 
+	patternName = "Value Object",
+	participants = {"CaseId"}
+)
 /**
  * Simple value object for case ids.
  */

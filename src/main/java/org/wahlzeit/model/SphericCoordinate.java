@@ -3,10 +3,10 @@ package org.wahlzeit.model;
 import java.util.logging.Logger;
 
 
-@interface DesignPatternCooridnate1{
-	String patternName = "Value Object";
-	String[] participants = {"SphericCoordinate", "CartesianCoordinate", "AbstractCoordiante"};
-};
+@PatternInstance(
+	patternName = "Value Object",
+	participants = {"SphericCoordinate", "CartesianCoordinate", "AbstractCoordiante"}
+)
 
 public class SphericCoordinate extends AbstractCoordinate {
 	
