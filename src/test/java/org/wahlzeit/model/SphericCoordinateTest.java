@@ -12,7 +12,7 @@ public class SphericCoordinateTest {
 	
 	@Before
 	public void initCoordinate() {
-		coordinate = new SphericCoordinate();
+		coordinate = SphericCoordinate.getSphericCoordinate(0, 0, 0);
 	}
 
 	@Test
@@ -27,8 +27,8 @@ public class SphericCoordinateTest {
 	@Test
 	public void testGetCentralAngle() {
 	//	//Der einfachste Fall
-		CartesianCoordinate cc = new CartesianCoordinate(1, 1, 1); 
-		CartesianCoordinate cc2 = new CartesianCoordinate(1, 1, 1); 
+		CartesianCoordinate cc = CartesianCoordinate.getCartesianCoordinate(1, 1, 1); 
+		CartesianCoordinate cc2 = CartesianCoordinate.getCartesianCoordinate(1, 1, 1); 
 		double angle = cc.getCentralAngle(cc2);
 		System.out.println(angle);
 		assertTrue(angle == 0.0);
@@ -37,8 +37,8 @@ public class SphericCoordinateTest {
 	//TODO: Machen
 	@Test
 	public void testGetCartesianDistance() {
-		CartesianCoordinate otherPoint = new CartesianCoordinate(0, 0, 2);
-		CartesianCoordinate otherPoint2 = new CartesianCoordinate(0, 0, 2);
+		CartesianCoordinate otherPoint = CartesianCoordinate.getCartesianCoordinate(0, 0, 2);
+		CartesianCoordinate otherPoint2 = CartesianCoordinate.getCartesianCoordinate(0, 0, 2);
 		SphericCoordinate sc1 = otherPoint.asSphericCoordinate();
 		SphericCoordinate sc2 = otherPoint2.asSphericCoordinate();
 		System.out.println(sc1.getCartesianDistance(otherPoint));
@@ -47,8 +47,8 @@ public class SphericCoordinateTest {
 	
 	@Test
 	public void testIsEqual() {
-		SphericCoordinate pointA = new SphericCoordinate(1, 2, 3);
-		SphericCoordinate pointB = new SphericCoordinate(0, 0, 0);
+		SphericCoordinate pointA = SphericCoordinate.getSphericCoordinate(1, 2, 3);
+		SphericCoordinate pointB = SphericCoordinate.getSphericCoordinate(0, 0, 0);
 		assertTrue(pointB.isEqual(coordinate));
 		assertFalse(pointA.isEqual(coordinate));
 		assertFalse(pointA.isEqual(pointB));
@@ -56,9 +56,9 @@ public class SphericCoordinateTest {
 	
 	@Test
 	public void testEquals() {
-		SphericCoordinate pointA = new SphericCoordinate(1, 2, 3);
-		SphericCoordinate pointB = new SphericCoordinate(0, 0, 0);
-		CartesianCoordinate cc = new CartesianCoordinate(1, 2, 3);
+		SphericCoordinate pointA = SphericCoordinate.getSphericCoordinate(1, 2, 3);
+		SphericCoordinate pointB = SphericCoordinate.getSphericCoordinate(0, 0, 0);
+		CartesianCoordinate cc = CartesianCoordinate.getCartesianCoordinate(1, 2, 3);
 		assertTrue(pointB.equals(coordinate));
 		assertFalse(pointA.equals(coordinate));
 		assertFalse(pointA.equals(pointB));
@@ -69,7 +69,7 @@ public class SphericCoordinateTest {
 	public void testAsCartesianCoordinate() {
 		CartesianCoordinate ca = coordinate.asCartesianCoordinate();
 		assertNotNull(ca);
-		SphericCoordinate cc = new SphericCoordinate(2, 3, 1);
+		SphericCoordinate cc = SphericCoordinate.getSphericCoordinate(2, 3, 1);
 		assertNotNull(cc);
 		CartesianCoordinate sc = cc.asCartesianCoordinate();
 		System.out.println("x = " + sc.getX());
@@ -88,7 +88,7 @@ public class SphericCoordinateTest {
 	
 	@Test(expected=IllegalStateException.class)
 	public void testDBCConstructor() {
-		SphericCoordinate pointA = new SphericCoordinate(1, -5, 3);
+		SphericCoordinate pointA = SphericCoordinate.getSphericCoordinate(1, -5, 3);
 	}
 	
 }

@@ -21,7 +21,7 @@ public class Location {
 		int i = 0;
 		for(i = 0; i < 3; i++) {
 			try {
-				coordinate = new CartesianCoordinate();
+				coordinate = CartesianCoordinate.getCartesianCoordinate(1, 2, 3);
 				break;
 			} catch(IllegalArgumentException e){
 				//Next Round in loop

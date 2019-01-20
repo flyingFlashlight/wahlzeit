@@ -14,13 +14,13 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
 	private static final Logger log = Logger.getLogger(AbstractCoordinate.class.getName());
 	
-	public CartesianCoordinate() {
+	private CartesianCoordinate() {
 		this.x = 0.0;
 		this.y = 0.0;
 		this.z = 0.0;
 	}
 	//I think this will help me for following tasks
-	public CartesianCoordinate(double x, double y, double z) throws IllegalStateException{
+	private CartesianCoordinate(double x, double y, double z) throws IllegalStateException{
 		super();
 		this.x = x;
 		this.y = y;
@@ -118,7 +118,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		
 		phi = phi % Math.PI;
 		
-		SphericCoordinate tmp =  new SphericCoordinate(phi, theta, radius);
+		SphericCoordinate tmp = SphericCoordinate.getSphericCoordinate(phi, theta, radius);
 		tmp.assertClassInvariants();
 		return tmp;
 	}
@@ -142,4 +142,24 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		
 	}
 	
+	private static String generateSeedString(double a, double b, double c) {
+		String seed = a + ":" + b + ":" + c + "C"; 
+		return seed;
+	}
+	
+	public static CartesianCoordinate getCartesianCoordinate(double x, double y, double z) {
+		String key = generateSeedString(x, y, z);
+		CartesianCoordinate result = (CartesianCoordinate) allCoordinates.get(key);
+		if(result == null) {
+			synchronized(CartesianCoordinate.class) {
+				result = (CartesianCoordinate) allCoordinates.get(key);
+				if(result == null) {
+					result = new CartesianCoordinate(x, y, z);
+					allCoordinates.put(key, result);
+				}
+			}
+		}
+		return result;
+		
+	}	
 }

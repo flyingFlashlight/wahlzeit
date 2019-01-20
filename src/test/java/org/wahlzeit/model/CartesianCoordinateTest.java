@@ -20,7 +20,7 @@ public class CartesianCoordinateTest {
 	
 	@Before
 	public void initCoordinate() {
-		coordinate = new CartesianCoordinate();
+		coordinate = CartesianCoordinate.getCartesianCoordinate(0, 0, 0);
 	}
 	
 	@Test
@@ -34,14 +34,14 @@ public class CartesianCoordinateTest {
 	
 	@Test
 	public void testGetCartesianDistance() {
-		Coordinate otherPoint = new CartesianCoordinate(0, 0, 2);
+		Coordinate otherPoint = CartesianCoordinate.getCartesianCoordinate(0, 0, 2);
 		assertTrue(2.0 == otherPoint.getCartesianDistance(coordinate));
 	}
 	
 	@Test
 	public void testIsEqual() {
-		Coordinate pointA = new CartesianCoordinate(1, 2, 3);
-		Coordinate pointB = new CartesianCoordinate(0, 0, 0);
+		Coordinate pointA = CartesianCoordinate.getCartesianCoordinate(1, 2, 3);
+		Coordinate pointB = CartesianCoordinate.getCartesianCoordinate(0, 0, 0);
 		assertTrue(pointB.isEqual(coordinate));
 		assertFalse(pointA.isEqual(coordinate));
 		assertFalse(pointA.isEqual(pointB));
@@ -49,8 +49,8 @@ public class CartesianCoordinateTest {
 	
 	@Test
 	public void testEquals() {
-		Coordinate pointA = new CartesianCoordinate(1, 2, 3);
-		Coordinate pointB = new CartesianCoordinate(0, 0, 0);
+		Coordinate pointA = CartesianCoordinate.getCartesianCoordinate(1, 2, 3);
+		Coordinate pointB = CartesianCoordinate.getCartesianCoordinate(0, 0, 0);
 		assertTrue(pointB.equals(coordinate));
 		assertFalse(pointA.equals(coordinate));
 		assertFalse(pointA.equals(pointB));
@@ -71,8 +71,8 @@ public class CartesianCoordinateTest {
 	@Test
 	public void testGetCentralAngle() {
 		//Der einfachste Fall
-		CartesianCoordinate cc = new CartesianCoordinate(1, 1, 1); 
-		CartesianCoordinate cc2 = new CartesianCoordinate(1, 1, 1); 
+		CartesianCoordinate cc = CartesianCoordinate.getCartesianCoordinate(1, 1, 1); 
+		CartesianCoordinate cc2 = CartesianCoordinate.getCartesianCoordinate(1, 1, 1); 
 		double angle = cc.getCentralAngle(cc2);
 		System.out.println(angle);
 		assertTrue(angle == 0.0);

@@ -31,7 +31,7 @@ public class LocationTest {
 	
 	@Test
 	public void testInitiatedConstructor(){
-		Coordinate coordinate = new CartesianCoordinate(1, 5, 2);
+		Coordinate coordinate = CartesianCoordinate.getCartesianCoordinate(1, 5, 2);
 		location = new Location(coordinate);
 		assertTrue(coordinate.equals(location.getCoordinate()));
 	}

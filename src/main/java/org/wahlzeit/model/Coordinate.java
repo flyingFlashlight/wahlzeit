@@ -22,4 +22,6 @@ public interface Coordinate {
 	
 	public boolean isEqual(Coordinate point);
 	
+	//public Coordinate getCoordinate(double a, double b, double c);
+	
 }

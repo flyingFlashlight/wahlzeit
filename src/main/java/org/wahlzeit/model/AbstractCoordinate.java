@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public abstract class AbstractCoordinate implements Coordinate {
 
 	private static final Logger log = Logger.getLogger(AbstractCoordinate.class.getName());
-	private Hashtable<Integer, Coordinate> allCoordinates = new Hashtable<Integer, Coordinate>();
+	protected static Hashtable<String, Coordinate> allCoordinates = new Hashtable<String, Coordinate>();
 
 	
 	public double getCartesianDistance(Coordinate point) throws IllegalArgumentException{
@@ -39,5 +39,4 @@ public abstract class AbstractCoordinate implements Coordinate {
 			throw new IllegalArgumentException("No argument given");
 		}
 	}	
-	
 }

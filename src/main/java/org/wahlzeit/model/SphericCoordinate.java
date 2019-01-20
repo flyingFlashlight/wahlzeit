@@ -18,14 +18,14 @@ public class SphericCoordinate extends AbstractCoordinate {
 	private static final Logger log = Logger.getLogger(AbstractCoordinate.class.getName());
 	
 
-	public SphericCoordinate() {
+	private SphericCoordinate() {
 		this.phi = 0.0;
 		this.theta = 0.0;
 		this.radius = 0.0;
 	}
 	
 	//We work with degrees instead of radians
-	public SphericCoordinate(double phi, double theta, double radius) throws IllegalStateException{
+	private SphericCoordinate(double phi, double theta, double radius) throws IllegalStateException{
 		super();
 		
 		this.phi = phi;
@@ -50,7 +50,7 @@ public class SphericCoordinate extends AbstractCoordinate {
 		//System.out.print("[asCC()] z is " + z + "\n");
 	
 		//Postcondition
-		CartesianCoordinate tmp = new CartesianCoordinate(x, y, z);
+		CartesianCoordinate tmp = CartesianCoordinate.getCartesianCoordinate(x, y, z);
 		tmp.assertClassInvariants();
 		
 		return tmp;
@@ -174,5 +174,25 @@ public class SphericCoordinate extends AbstractCoordinate {
 			throw new IllegalArgumentException("Argument is no instance of SphericCoordinate");
 		}
 		
+	}
+
+	private static String generateSeedString(double a, double b, double c) {
+		String seed = a + ":" + b + ":" + c + "S"; 
+		return seed;
+	}
+	
+	public static SphericCoordinate getSphericCoordinate(double a, double b, double c) {
+		String key = generateSeedString(a, b, c);
+		SphericCoordinate result = (SphericCoordinate) allCoordinates.get(key);
+		if(result == null) {
+			synchronized(SphericCoordinate.class) {
+				result = (SphericCoordinate) allCoordinates.get(key);
+				if(result == null) {
+					result = new SphericCoordinate(a, b, c);
+					allCoordinates.put(key, result);
+				}
+			}
+		}
+		return result;
 	}
 }
