@@ -46,7 +46,9 @@ import org.junit.runners.*;
 	//org.wahlzeit.testEnvironmentProvider.WebFormHandlerProvider.class,
 	
 	org.wahlzeit.utils.StringUtilTest.class,
-	org.wahlzeit.utils.VersionTest.class
+	org.wahlzeit.utils.VersionTest.class,
+	
+	org.wahlzeit.model.BiroTypeTest.class
 })
 
 public class AllTests {
