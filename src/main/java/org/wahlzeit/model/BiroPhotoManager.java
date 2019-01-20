@@ -1,6 +1,7 @@
 package org.wahlzeit.model;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -36,6 +37,7 @@ public class BiroPhotoManager extends PhotoManager{
 	 * @methodproperties primitive
 	 */
 	protected void doAddPhoto(BiroPhoto myPhoto) {
+		myPhoto.manager = this;
 		this.photoCache.put(myPhoto.getId(), myPhoto);
 	}
 	
