@@ -24,6 +24,7 @@ import com.google.appengine.api.images.Image;
 import com.google.appengine.api.images.ImagesServiceFactory;
 
 import org.wahlzeit.model.BiroPhotoFactory;
+import org.wahlzeit.model.BiroPhotoManager;
 import org.wahlzeit.model.GlobalsManager;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoCaseManager;
